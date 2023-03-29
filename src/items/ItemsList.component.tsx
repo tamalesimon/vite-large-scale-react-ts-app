@@ -1,16 +1,26 @@
 import React from "react";
+import { ItemInterface } from "./Item.interface";
 
-export const ItemsListComponent: React.FC<{
-    items: any[]
-}> = (props) => {
+
+type Props = {
+    items: ItemInterface[],
+    onItemSelect: (item: ItemInterface) => void
+  }
+
+export const ItemsListComponent:React.FC<Props> = (props) => {
+
+    const handleItemClick = (item: ItemInterface) => {
+        props.onItemSelect(item)
+    }
     return (
         <div>
             <h3>Items List</h3>
             <ul>
                 {props.items.map((item) =>{
-                    return <li key={item.index}>{item.name}</li>
+                    return <li key={item.id} onClick={()=> handleItemClick(item)}>{item.name}</li>
                 })}
             </ul>
         </div>
     )
 }
+
