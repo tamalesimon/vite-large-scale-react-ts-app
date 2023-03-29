@@ -7,9 +7,9 @@ export const ItemsListComponent: React.FC<{
         <div>
             <h3>Items List</h3>
             <ul>
-                {props.items.map((item) => (
-                    <li key={item.index}>{item.name}</li>
-                ))}
+                {props.items.map((item) =>{
+                    return <li key={item.index}>{item.name}</li>
+                })}
             </ul>
         </div>
     )
