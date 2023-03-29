@@ -1,11 +1,16 @@
 import React from "react";
 import { ItemInterface } from "./Item.interface";
 
-export const ItemsListComponent: React.FC<{items:ItemInterface[]}> = (props) => {
 
-    const handleItemClick =(item: ItemInterface) => {
-        item.selected = !item.selected
-        console.log('handleItemClick ->', item.id, item.selected);
+type Props = {
+    items: ItemInterface[],
+    onItemSelect: (item: ItemInterface) => void
+  }
+
+export const ItemsListComponent:React.FC<Props> = (props) => {
+
+    const handleItemClick = (item: ItemInterface) => {
+        props.onItemSelect(item)
     }
     return (
         <div>
@@ -18,3 +23,4 @@ export const ItemsListComponent: React.FC<{items:ItemInterface[]}> = (props) => 
         </div>
     )
 }
+
