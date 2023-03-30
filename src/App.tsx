@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState} from 'react';
+import {ItemInterface} from "./components/model/items/Item.interface";
+import {ItemsListComponent} from "./components/items/ItemsList.component";
+
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const initialItems: ItemInterface[] = [
+        {
+            id: 1,
+            name: "Item 1",
+            selected: true
+        }, {
+            id: 2,
+            name: "Item 2",
+            selected: false
+        }, {
+            id: 3,
+            name: "Item 3",
+            selected: false
+        }, {
+            id: 4,
+            name: "Item 4",
+            selected: true
+        },
+    ]
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    const [items, setItems] = useState < ItemInterface[] > (initialItems)
+
+    function onItemSelect(item : ItemInterface) {
+        const updatedItems = [...items];
+        const index = updatedItems.find((i) => i.id === item.id)as ItemInterface;
+        index.selected = ! item.selected;
+
+        console.log("App.tsx: onItemSelect ->", index.id, index.name, index.selected);
+    }
+    return (
+        <div>
+            <ItemsListComponent items={items}
+                onItemSelect={onItemSelect}/>
+        </div>
+    )
 }
 
 export default App
