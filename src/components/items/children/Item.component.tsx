@@ -1,5 +1,6 @@
 import React from "react";
 import { ItemInterface } from "../../model/items/Item.interface";
+import "../../../App.css";
 
 type Props = {
     testId: string,
@@ -11,8 +12,8 @@ export const ItemComponent: React.FC<Props> = ({ testId, model, onItemSelect }) 
 
     const getCssClass = (): any => {
         let css = 'item';
-        if (model.selected) {
-            css+= 'selected'
+        if (model?.selected) {
+            css+= ' selected'
         } return css.trim();
     }
 

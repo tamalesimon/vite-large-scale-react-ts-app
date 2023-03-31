@@ -35,7 +35,7 @@ function App() {
         console.log("App.tsx: onItemSelect ->", index.id, index.name, index.selected);
     }
     return (
-        <div>
+        <div className='App'>
             <ItemsListComponent items={items}
                 onItemSelect={onItemSelect}/>
         </div>
