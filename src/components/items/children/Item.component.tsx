@@ -12,7 +12,7 @@ export const ItemComponent: React.FC<Props> = ({ testId, model, onItemSelect }) 
     const getCssClass = (): any => {
         let css = 'item';
         if (model.selected) {
-
+            css+= 'selected'
         } return css.trim();
     }
 

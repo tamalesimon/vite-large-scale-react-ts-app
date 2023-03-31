@@ -17,15 +17,9 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-    "@/*": [
-    "src/*"
-    ]
+      "@/*": ["src/*"]
     },
-    "types": [
-    "react",
-    "vite/client",
-    "vitest/globals"
-    ]
+    "types": ["react", "vite/client", "vitest/globals"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
