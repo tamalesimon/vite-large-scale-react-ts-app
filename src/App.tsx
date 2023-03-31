@@ -1,7 +1,8 @@
 import {useState} from 'react';
-import {ItemInterface} from "./items/Item.interface";
-import {ItemsListComponent} from "./items/ItemsList.component";
+import {ItemInterface} from "./components/model/items/Item.interface";
+import {ItemsListComponent} from "./components/items/ItemsList.component";
 
+import "./App.css";
 
 function App() {
     const initialItems: ItemInterface[] = [
@@ -28,7 +29,7 @@ function App() {
 
     function onItemSelect(item : ItemInterface) {
         const updatedItems = [...items];
-        const index = updatedItems.find((i) => i.id === item.id) as ItemInterface;
+        const index = updatedItems.find((i) => i.id === item.id)as ItemInterface;
         index.selected = ! item.selected;
 
         console.log("App.tsx: onItemSelect ->", index.id, index.name, index.selected);
@@ -42,4 +43,3 @@ function App() {
 }
 
 export default App
-
