@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {ItemInterface} from "./components/model/items/Item.interface";
 import {ItemsListComponent} from "./components/items/ItemsList.component";
 
-import "./App.css";
+
 
 function App() {
     const initialItems: ItemInterface[] = [
