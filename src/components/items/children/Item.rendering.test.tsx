@@ -37,4 +37,36 @@ describe('Item.component: rendering', () => {
         expect(children.length).toBe(2);
         expect(children.item(0)?.innerHTML).toContain('*')
     })
+
+    it('Has expected css class when selected is true', () => {
+        const testid = 'unit-test-item'
+        const model: ItemInterface = {
+            id: 1,
+            name: "Unit test item 3",
+            selected: true
+        }
+
+        render(<ItemComponent testId={testid} model={model} onItemSelect={() => {}}/>)
+        const itemElement = screen.getByTestId(testid);
+
+        expect(itemElement).not.toBeNull();
+
+        expect(itemElement.className).toContain('selected');
+    })
+
+    it('Has expected css class when selected is false', () => {
+        const testid = 'unit-test-item'
+        const model: ItemInterface = {
+            id: 1,
+            name: "Unit test item 3",
+            selected: false
+        }
+
+        render(<ItemComponent testId={testid} model={model} onItemSelect={() => {}}/>)
+        const itemElement = screen.getByTestId(testid);
+
+        expect(itemElement).not.toBeNull();
+
+        expect(itemElement.className).not.toContain('selected');
+    })
 })
